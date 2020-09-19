@@ -1,0 +1,59 @@
+{
+    "name": "hotel101-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@shoelace-style/react-wrapper": "^1.0.3",
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.5.0",
+        "@testing-library/user-event": "^7.2.1",
+        "@uiw/react-tag": "^4.6.10",
+        "@yaireo/tagify": "^3.18.1",
+        "autoprefixer": "^9.5.1",
+        "axios": "^0.20.0",
+        "google-maps-react": "^2.0.6",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-flash-message": "^1.0.3",
+        "react-image-lightbox": "^5.1.1",
+        "react-redux": "^7.2.1",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "3.4.3",
+        "react-slick": "^0.27.11",
+        "react-to-print": "^2.10.0",
+        "react-typical": "^0.1.3",
+        "redux": "^4.0.5",
+        "secure-ls": "^1.2.6",
+        "tailwindcss": "^1.6.2"
+    },
+    "devDependencies": {
+        "@fullhuman/postcss-purgecss": "^1.2.0",
+        "concurrently": "^5.3.0",
+        "cross-env": "^5.2.0",
+        "cssnano": "^4.1.10",
+        "postcss-cli": "^7.1.1"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "tailwind-dev": "cross-env NODE_ENV=development postcss public/assets/css/tailwind-default.css -o public/assets/css/tailwind.css",
+        "tailwind-prod": "cross-env NODE_ENV=production postcss public/assets/css/tailwind-default.css -o public/assets/css/tailwind.css"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
