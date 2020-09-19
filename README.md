@@ -37,9 +37,9 @@ php artisan passport:install
 php artisan serve
 **6 - Install React dependencies:**
 
-    	cd ..
-    	cd frontend
-    	npm install
+    cd ..
+    cd frontend
+    npm install
 
 **7 - Set base url in .env file**
 
