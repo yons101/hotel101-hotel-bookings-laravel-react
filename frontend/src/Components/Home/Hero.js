@@ -28,9 +28,9 @@ function Hero() {
                 alt="hotel cover"
             />
 
-            <div className="book flex flex-col justify-center items-center text-gray-100 z-20 w-10/12">
-                <h2 className="mt-16 hidden sm:block text-xl md:text-4xl xl:text-6xl capitalize text-center ">
-                    Enjoy a luxury experience <br /> in
+            <div className="mt-8 book flex flex-col justify-center items-center text-gray-100 z-20 w-10/12">
+                <h2 className="mt-16 hidden sm:block text-xl md:text-4xl xl:text-6xl capitalize text-center font-serif">
+                    Enjoy a luxury experience in <br />
                     <Typical
                         steps={[
                             " Marrakech",
@@ -52,17 +52,17 @@ function Hero() {
                     />
                 </h2>
 
-                <div className="bg-orange-500 bg-opacity-75 mt-5 p-5 rounded-sm mx-auto text-gray-700 w-11/12 sm:w-9/12 md:w-8/12 lg:w-7/12 xl:w-9/12  ">
+                <div className="bg-orange-500 bg-opacity-75 mt-5 p-5 rounded-sm mx-auto text-gray-700 w-11/12 sm:w-9/12 md:w-8/12 lg:w-7/12 xl:w-9/12 font-sans">
                     <div
                         className="flex flex-col xl:flex-row 
-                justify-evenly items-center"
+                 items-center"
                     >
                         <div className="flex flex-col md:mr-3 w-full md:w-3/4 ">
-                            <span className="text-gray-100 font-semibold text-xl">
+                            <span className="text-gray-100 text-xl">
                                 Check In
                             </span>
                             <input
-                                className="px-6 py-3 mt-2"
+                                className="px-6 py-3 mt-2 w-full"
                                 type="date"
                                 value={initSearchData.check_in}
                                 onChange={(e) =>
@@ -74,11 +74,11 @@ function Hero() {
                             />
                         </div>
                         <div className="flex flex-col md:mr-3 w-full md:w-3/4 ">
-                            <span className="text-gray-100 font-semibold text-xl">
+                            <span className="text-gray-100 text-xl">
                                 Check Out
                             </span>
                             <input
-                                className="px-6 py-3 mt-2"
+                                className="px-6 py-3 mt-2 w-full"
                                 type="date"
                                 value={initSearchData.check_out}
                                 onChange={(e) =>
@@ -90,9 +90,7 @@ function Hero() {
                             />
                         </div>
                         <div className="flex flex-col md:mr-3 w-full md:w-3/4 ">
-                            <span className="text-gray-100 font-semibold text-xl">
-                                City
-                            </span>
+                            <span className="text-gray-100 text-xl">City</span>
                             <select
                                 className="px-6 py-3 mt-2"
                                 value={initSearchData.city}
@@ -115,7 +113,7 @@ function Hero() {
                             </select>
                         </div>
                         <div className="flex flex-col md:mr-3 w-full md:w-3/4 ">
-                            <span className="text-gray-100 font-semibold text-xl">
+                            <span className="text-gray-100 text-xl">
                                 Guests
                             </span>
                             <select
@@ -140,7 +138,7 @@ function Hero() {
                 <hr className="hidden xl:block my-5 w-4/12 mx-auto border-orange-800" />
 
                 <Link
-                    className="text-center bg-yellow-600 text-white hover:bg-yellow-700 uppercase rounded-sm  px-12 py-4 shadow
+                    className="font-sans text-center bg-yellow-600 text-white hover:bg-yellow-700 uppercase rounded-sm  px-12 py-4 shadow
                     hover:shadow-lg block mx-auto mt-2 xl:mt-0"
                     to={`/search/check_in=${initSearchData.check_in}&check_out=${initSearchData.check_out}&city=${initSearchData.city}&guest=${initSearchData.guest}`}
                 >

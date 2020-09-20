@@ -15,7 +15,7 @@ function Welcome() {
         <section>
             <div className="mt-8 p-8 xl:px-48 ">
                 <div className="text-center ">
-                    <h2 className="text-4xl font-semibold text-gray-800 font-custom-serif">
+                    <h2 className="text-4xl font-semibold text-gray-800 font-serif">
                         Welcome To Hotel101
                     </h2>
 

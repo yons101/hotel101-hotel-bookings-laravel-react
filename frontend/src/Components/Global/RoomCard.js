@@ -23,7 +23,7 @@ function RoomCard({ room }) {
                     <div className="absolute bottom-0 text-gray-100 flex">
                         <div className="bg-orange-600 py-2 px-6 rounded-tr-lg hover:bg-orange-800 flex flex-col items-center">
                             <span className="line-through text-gray-300 text-sm">
-                                {room.price + 100} $
+                                {parseFloat(room.price) + 100} $
                             </span>
                             <span className="text-xl">{room.price} $</span>
                         </div>
@@ -31,7 +31,7 @@ function RoomCard({ room }) {
                 </div>
                 <div className="bg-gray-200 py-5 px-2">
                     <a href={`/room/${room.id}`}>
-                        <h2 className="text-2xl font-semibold text-center hover:text-gray-600">
+                        <h2 className="text-2xl font-medium text-center hover:text-gray-600">
                             {room.name}
                         </h2>
                     </a>

@@ -32,28 +32,29 @@ function Header({ hotelId }) {
                         className="w-16 inline-block "
                         alt="logo"
                     />
-                    <span className="hidden md:inline-block">Hotel101</span>
+                    <span className="hidden md:inline-block font-serif">
+                        Hotel101
+                    </span>
                 </Link>
 
                 <ul
                     id="flex-menu"
-                    className="z-40 md:flex items-center text-lg"
+                    className="z-40 md:flex items-center text-lg font-sans"
                 >
                     {!state.auth.isAuthenticated ? (
                         <>
                             <li
-                                className="mr-5 hover:text-yellow-500"
-                                onMouseEnter={() => setDropDown(true)}
-                                onMouseLeave={() => setDropDown(false)}
+                                className="mr-5 hover:text-yellow-500 "
+                                onClick={() => setDropDown(!dropDown)}
                             >
                                 <span className="pb-2 pl-24">
-                                    <i className="fas fa-caret-down fa-lg fa-2x"></i>
+                                    <i className="fas fa-caret-down fa-lg fa-2x cursor-pointer"></i>
                                 </span>
                                 <br />
                             </li>
 
                             <div
-                                onMouseEnter={() => setDropDown(true)}
+                                onClick={() => setDropDown(!dropDown)}
                                 onMouseLeave={() => setDropDown(false)}
                                 className="absolute right-0 md:mt-24 mr-10 xl:mr-24 w-48 rounded-sm  shadow-lg py-1 bg-gray-100 text-sm"
                                 style={
@@ -79,18 +80,17 @@ function Header({ hotelId }) {
                     ) : (
                         <>
                             <li
-                                className="mr-5 hover:text-yellow-500"
-                                onMouseEnter={() => setDropDown(true)}
-                                onMouseLeave={() => setDropDown(false)}
+                                className="mr-5 hover:text-yellow-500 cur"
+                                onClick={() => setDropDown(!dropDown)}
                             >
                                 <span className="pb-2 pl-24">
-                                    <i className="fas fa-caret-down fa-lg fa-2x"></i>
+                                    <i className="fas fa-caret-down fa-lg fa-2x cursor-pointer"></i>
                                 </span>
                                 <br />
                             </li>
                             {!state.auth.is_admin ? (
                                 <div
-                                    onMouseEnter={() => setDropDown(true)}
+                                    onClick={() => setDropDown(!dropDown)}
                                     onMouseLeave={() => setDropDown(false)}
                                     className="absolute right-0 md:mt-48 mr-10 xl:mr-24 w-48 rounded-sm  shadow-lg py-1 bg-gray-100 text-sm"
                                     style={
@@ -135,7 +135,7 @@ function Header({ hotelId }) {
                                 </div>
                             ) : (
                                 <div
-                                    onMouseEnter={() => setDropDown(true)}
+                                    onClick={() => setDropDown(!dropDown)}
                                     onMouseLeave={() => setDropDown(false)}
                                     className="absolute right-0 md:mt-64 mr-10 xl:mr-24 w-48 rounded-sm  shadow-lg py-1 bg-gray-100 text-sm"
                                     style={
