@@ -2,7 +2,7 @@ Welcome to Hotel101, a hotel bookings system, built with Laravel backend, React 
 
 **Demo:**
 
-1 - https://elated-yonath-32d0a5.netlify.app
+1 - https://hotel101.netlify.app
 
 2 - http://hotel101.ga
 
