@@ -83,7 +83,7 @@ function HotelItem({ hotel }) {
                         </span>
                     </div>
                     <div className="mt-5">
-                        <div className="flex justify-between items-center">
+                        <div className="flex flex-col md:flex-row justify-between md:items-center">
                             <div className="mr-5 text-gray-900">
                                 {Array(hotel.star)
                                     .fill()
@@ -96,7 +96,7 @@ function HotelItem({ hotel }) {
                             </div>
                             <Link
                                 to={`/hotel/${hotel.id}`}
-                                className="bg-yellow-600 rounded-sm  text-white hover:bg-yellow-700 text-sm px-8 py-2 shadow
+                                className="mt-5 md:mt-0 bg-yellow-600 rounded-sm text-center text-white hover:bg-yellow-700 text-sm px-8 py-2 shadow
                     hover:shadow-lg"
                                 type="button"
                             >
