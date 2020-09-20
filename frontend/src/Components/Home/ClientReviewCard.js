@@ -3,8 +3,7 @@ import React from "react";
 function ClientReviewCard({ avatar, name, location, rating, review }) {
     return (
         <div
-            className="mt-16 flex flex-col md:w-1/3 bg-gray-100 text-center text-gray-700 rounded-sm  p-8 m-2 
-                items-center "
+            className="mt-16 flex flex-col md:w-1/3 bg-gray-100 text-center text-gray-700 rounded-sm  p-8 m-2 items-center shadow-lg"
         >
             <img
                 src={avatar}
