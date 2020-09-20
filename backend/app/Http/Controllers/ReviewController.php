@@ -164,7 +164,7 @@ class ReviewController extends Controller
             $data['reviews'] =  Review::join('hotels', 'hotels.id', '=', 'reviews.hotel_id')
                 ->join('users', 'users.id', '=', 'reviews.user_id')
                 ->select('reviews.id as id', 'rating', 'content', 'hotel_id', 'user_id', 'first_name', 'last_name', 'users.image')
-                ->groupBy('id', 'rating', 'content', 'hotel_id', 'user_id', 'first_name', 'last_name', 'users.image')
+                ->groupBy('reviews.id', 'rating', 'content', 'hotel_id', 'user_id', 'first_name', 'last_name', 'users.image')
                 ->where('hotel_id', '=', $hotel->id)
                 ->orderBy('reviews.updated_at', 'desc')
                 ->paginate(5);
@@ -174,7 +174,7 @@ class ReviewController extends Controller
             $data['reviews'] =  Review::join('hotels', 'hotels.id', '=', 'reviews.hotel_id')
                 ->join('users', 'users.id', '=', 'reviews.user_id')
                 ->select('reviews.id as id', 'rating', 'content', 'hotel_id', 'user_id', 'first_name', 'last_name', 'users.image')
-                ->groupBy('id', 'rating', 'content', 'hotel_id', 'user_id', 'first_name', 'last_name', 'users.image')
+                ->groupBy('reviews.id', 'rating', 'content', 'hotel_id', 'user_id', 'first_name', 'last_name', 'users.image')
                 ->where('hotel_id', '=', $hotel->id)
                 ->orderBy('reviews.updated_at', 'desc')
                 ->paginate(5);
