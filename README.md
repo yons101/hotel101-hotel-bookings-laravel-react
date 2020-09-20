@@ -1,4 +1,10 @@
-Welcome to Hotel101, a hotel bookings system, built with Laravel backend, and React and Tailwind CSS in the frontend.
+Welcome to Hotel101, a hotel bookings system, built with Laravel backend, React and Tailwind CSS in the frontend.
+
+**Demo:**
+
+1 - https://elated-yonath-32d0a5.netlify.app
+
+2 - http://hotel101.ga
 
 **1 - Clone the project:**
 
@@ -30,9 +36,9 @@ php artisan passport:install
 php artisan serve
 **6 - Install React dependencies:**
 
-    	cd ..
-    	cd frontend
-    	npm install
+    cd ..
+    cd frontend
+    npm install
 
 **7 - Set base url in .env file**
 
