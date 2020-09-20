@@ -40,7 +40,7 @@ function HotelCard({ hotel: { id, name, min_price, star, image } }) {
                         </div>
                     </div>
 
-                    <h2 className="p-5 uppercase text-xl font-bold  text-center text-orange-800 hover:text-orange-600">
+                    <h2 className="p-5 uppercase text-xl font-bold font-serif  text-center text-orange-800 hover:text-orange-600">
                         Hotel {name}
                     </h2>
                 </Link>
