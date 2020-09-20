@@ -9,6 +9,7 @@ use App\Booking;
 use App\Feature;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class HotelController extends Controller
@@ -30,12 +31,17 @@ class HotelController extends Controller
     //get all hotels
     public function getAllHotels()
     {
-        $data['success'] = true;
-        $data['hotels'] =  Hotel::leftjoin('rooms', 'hotels.id', '=', 'rooms.hotel_id')
-            ->leftjoin('bookings', 'rooms.id', '=', 'bookings.room_id')
-            ->select('hotels.id', 'hotels.name', 'hotels.image', DB::raw('COUNT(DISTINCT rooms.id) as rooms_count'), DB::raw('COUNT(DISTINCT bookings.id) as bookings_count'))
-            ->groupBy('hotels.id', 'hotels.name', 'hotels.image')
-            ->paginate(6);
+        if (Auth::user()->is_admin) {
+            $data['success'] = true;
+            $data['hotels'] =  Hotel::leftjoin('rooms', 'hotels.id', '=', 'rooms.hotel_id')
+                ->leftjoin('bookings', 'rooms.id', '=', 'bookings.room_id')
+                ->select('hotels.id', 'hotels.name', 'hotels.image', DB::raw('COUNT(DISTINCT rooms.id) as rooms_count'), DB::raw('COUNT(DISTINCT bookings.id) as bookings_count'))
+                ->groupBy('hotels.id', 'hotels.name', 'hotels.image')
+                ->paginate(6);
+        } else
+            $data['success'] = false;
+
+
         return response()->json(['data' => $data]);
     }
 
@@ -51,35 +57,38 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = $this->validateData([
-                'name' => 'required',
-                'address' => 'required',
-                'city' => 'required',
-                'star' => 'required',
-                'x_coordinate' => 'required',
-                'y_coordinate' => 'required',
-                'image' => 'required',
-            ]);
+            if (Auth::user()->is_admin) {
+                $data = $this->validateData([
+                    'name' => 'required',
+                    'address' => 'required',
+                    'city' => 'required',
+                    'star' => 'required',
+                    'x_coordinate' => 'required',
+                    'y_coordinate' => 'required',
+                    'image' => 'required',
+                ]);
 
-            $fileName = null;
-            if ($request->file('image')) {
-                $fileName = "hotel_" . time() . "." . $request->file('image')->getClientOriginalExtension();
-                $request->file('image')->move(public_path("/img/hotels"), $fileName);
-            }
+                $fileName = null;
+                if ($request->file('image')) {
+                    $fileName = "hotel_" . time() . "." . $request->file('image')->getClientOriginalExtension();
+                    $request->file('image')->move(public_path("/img/hotels"), $fileName);
+                }
 
-            $hotel = new Hotel;
-            $hotel->name = $request->name;
-            $hotel->address = $request->address;
-            $hotel->city = $request->city;
-            $hotel->star = $request->star;
-            $hotel->x_coordinate = $request->x_coordinate;
-            $hotel->y_coordinate = $request->y_coordinate;
-            $hotel->image = $fileName;
+                $hotel = new Hotel;
+                $hotel->name = $request->name;
+                $hotel->address = $request->address;
+                $hotel->city = $request->city;
+                $hotel->star = $request->star;
+                $hotel->x_coordinate = $request->x_coordinate;
+                $hotel->y_coordinate = $request->y_coordinate;
+                $hotel->image = $fileName;
 
-            if ($hotel->save()) {
-                $data['success'] = true;
-                $data['hotel'] = $hotel;
-            }
+                if ($hotel->save()) {
+                    $data['success'] = true;
+                    $data['hotel'] = $hotel;
+                }
+            } else
+                $data['success'] = false;
         } catch (\Throwable $th) {
             $data['success'] =  false;
         }
@@ -108,35 +117,38 @@ class HotelController extends Controller
     public function update(Request $request, Hotel $hotel)
     {
         try {
-            $data = $this->validateData([
-                'name' => 'required',
-                'address' => 'required',
-                'city' => 'required',
-                'star' => 'required',
-                'x_coordinate' => 'required',
-                'y_coordinate' => 'required',
-            ]);
+            if (Auth::user()->is_admin) {
+                $data = $this->validateData([
+                    'name' => 'required',
+                    'address' => 'required',
+                    'city' => 'required',
+                    'star' => 'required',
+                    'x_coordinate' => 'required',
+                    'y_coordinate' => 'required',
+                ]);
 
-            if ($request->hasFile('image')) {
-                $fileName = null;
-                if ($request->file('image')) {
-                    $fileName = "hotel_" . time() . "." . $request->file('image')->getClientOriginalExtension();
-                    $request->file('image')->move(public_path("/img/hotels"), $fileName);
-                    $hotel->image = $fileName;
+                if ($request->hasFile('image')) {
+                    $fileName = null;
+                    if ($request->file('image')) {
+                        $fileName = "hotel_" . time() . "." . $request->file('image')->getClientOriginalExtension();
+                        $request->file('image')->move(public_path("/img/hotels"), $fileName);
+                        $hotel->image = $fileName;
+                    }
                 }
-            }
 
-            $hotel->name = $request->name;
-            $hotel->address = $request->address;
-            $hotel->city = $request->city;
-            $hotel->star = $request->star;
-            $hotel->x_coordinate = $request->x_coordinate;
-            $hotel->y_coordinate = $request->y_coordinate;
+                $hotel->name = $request->name;
+                $hotel->address = $request->address;
+                $hotel->city = $request->city;
+                $hotel->star = $request->star;
+                $hotel->x_coordinate = $request->x_coordinate;
+                $hotel->y_coordinate = $request->y_coordinate;
 
-            if ($hotel->save()) {
-                $data['success'] = true;
-                $data['hotel'] = $hotel;
-            }
+                if ($hotel->save()) {
+                    $data['success'] = true;
+                    $data['hotel'] = $hotel;
+                }
+            } else
+                $data['success'] = false;
         } catch (\Throwable $th) {
             $data['success'] =  false;
         }
@@ -147,10 +159,13 @@ class HotelController extends Controller
     //delete a hotel
     public function destroy(Hotel $hotel)
     {
-        if ($hotel->delete()) {
+        if (Auth::user()->is_admin) {
+            $hotel->delete();
             $data['success'] = true;
             $data['hotel'] = $hotel;
-        }
+        } else
+            $data['success'] = false;
+
         return response()->json(['data' => $data]);
     }
 

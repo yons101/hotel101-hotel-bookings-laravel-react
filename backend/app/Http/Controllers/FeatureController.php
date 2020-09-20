@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Feature;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class FeatureController extends Controller
@@ -12,15 +13,19 @@ class FeatureController extends Controller
     public function store($request)
     {
         try {
-            $data = $this->validateData([
-                'name' => 'required',
-                'room_id' => 'required',
-            ]);
 
-            $feature = new Feature;
-            $feature->name = $request['name'];
-            $feature->room_id = $request['room_id'];
-            $feature->save();
+            if (Auth::user()->is_admin) {
+                $data = $this->validateData([
+                    'name' => 'required',
+                    'room_id' => 'required',
+                ]);
+
+                $feature = new Feature;
+                $feature->name = $request['name'];
+                $feature->room_id = $request['room_id'];
+                $feature->save();
+            } else
+                $data['success'] =  false;
         } catch (\Throwable $th) {
             $data['success'] =  false;
         }
@@ -33,10 +38,14 @@ class FeatureController extends Controller
     //delete a feature
     public function destroy(Feature $feature)
     {
-        if ($feature->delete()) {
+        if (Auth::user()->is_admin) {
+            $feature->delete();
             $data['success'] = true;
             $data['feature'] = $feature;
-        }
+        } else
+            $data['success'] = false;
+
+
         return response()->json(['data' => $data]);
     }
 

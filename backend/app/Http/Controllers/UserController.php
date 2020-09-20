@@ -14,44 +14,17 @@ class UserController extends Controller
     //show one
     public function show(User $user)
     {
-        if ($user) {
+        if ($user->id == Auth::user()->id) {
             $data['success'] = true;
-            $data['user'] = $user;
-        }
+            $data['user']['first_name'] = $user->first_name;
+            $data['user']['last_name'] = $user->last_name;
+            $data['user']['phone'] = $user->phone;
+            $data['user']['address'] = $user->address;
+            $data['user']['city'] = $user->city;
+            $data['user']['image'] = $user->image;
+        } else
+            $data['success'] = false;
 
-        return response()->json(['data' => $data]);
-    }
-
-    //update one
-    public function update(User $user)
-    {
-        try {
-            $data = $this->validateData([
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'phone' => 'nullable',
-                'address' => 'nullable',
-                'city' => 'nullable',
-                'email' => 'required|email',
-                'password' => 'required',
-            ]);
-
-            $user->first_name = request()->first_name;
-            $user->last_name = request()->last_name;
-            $user->phone = request()->phone;
-            $user->address = request()->address;
-            $user->city = request()->city;
-            $user->email = request()->email;
-            $user->password =  bcrypt(request()['password']);
-
-            if ($user->save()) {
-                $data['success'] = true;
-                $data['user'] = $user;
-            }
-        } catch (\Throwable $th) {
-            $data['success'] =  false;
-            $data['errors'] =  collect(['Error']);
-        }
 
         return response()->json(['data' => $data]);
     }
@@ -61,33 +34,40 @@ class UserController extends Controller
     public function updatePersonalInfo(Request $request, User $user)
     {
         try {
+            if ($user->id == Auth::user()->id) {
+                $data = $this->validateData([
+                    'first_name' => 'required',
+                    'last_name' => 'required',
+                    'phone' => 'nullable',
+                    'address' => 'nullable',
+                    'city' => 'nullable',
+                ]);
 
-            $data = $this->validateData([
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'phone' => 'nullable',
-                'address' => 'nullable',
-                'city' => 'nullable',
-            ]);
+                $fileName = null;
+                if ($request->file('image')) {
+                    $fileName = "user_" . $user->id . "_" . time() . "." . $request->file('image')->getClientOriginalExtension();
+                    $request->file('image')->move(public_path("/img/users/"), $fileName);
+                    $user->image = $fileName;
+                }
 
-            $fileName = null;
-            if ($request->file('image')) {
-                $fileName = "user_" . $user->id . "_" . time() . "." . $request->file('image')->getClientOriginalExtension();
-                $request->file('image')->move(public_path("/img/users/"), $fileName);
-                $user->image = $fileName;
-            }
+                $user->first_name = $request->first_name;
+                $user->last_name = $request->last_name;
+                $user->phone = $request->phone;
 
-            $user->first_name = $request->first_name;
-            $user->last_name = $request->last_name;
-            $user->phone = $request->phone;
+                $user->address = $request->address;
+                $user->city = $request->city;
 
-            $user->address = $request->address;
-            $user->city = $request->city;
-
-            if ($user->save()) {
-                $data['success'] = true;
-                $data['user'] = $user;
-            }
+                if ($user->save()) {
+                    $data['success'] = true;
+                    $data['user']['first_name'] = $user->first_name;
+                    $data['user']['last_name'] = $user->last_name;
+                    $data['user']['phone'] = $user->phone;
+                    $data['user']['address'] = $user->address;
+                    $data['user']['city'] = $user->city;
+                    $data['user']['image'] = $user->image;
+                }
+            } else
+                $data['success'] = false;
         } catch (\Throwable $th) {
             $data['success'] =  false;
             $data['errors'] =  collect(['Error']);
@@ -100,28 +80,37 @@ class UserController extends Controller
     public function updateEmail(User $user)
     {
         try {
-            $data = $this->validateData([
-                'email' => 'required',
-                'newEmail' => 'required',
-                'confirmNewEmail' => 'required',
-            ]);
+
+            if ($user->id == Auth::user()->id) {
+                $data = $this->validateData([
+                    'email' => 'required',
+                    'newEmail' => 'required',
+                    'confirmNewEmail' => 'required',
+                ]);
 
 
-            if ($user->email === request()->email) {
+                if ($user->email === request()->email) {
 
-                $user->email = request()->newEmail;
-                if (request()->newEmail == request()->confirmNewEmail) {
-                    $user->save();
-                    $data['success'] = true;
-                    $data['user'] = $user;
+                    $user->email = request()->newEmail;
+                    if (request()->newEmail == request()->confirmNewEmail) {
+                        $user->save();
+                        $data['success'] = true;
+                        $data['user']['first_name'] = $user->first_name;
+                        $data['user']['last_name'] = $user->last_name;
+                        $data['user']['phone'] = $user->phone;
+                        $data['user']['address'] = $user->address;
+                        $data['user']['city'] = $user->city;
+                        $data['user']['image'] = $user->image;
+                    } else {
+                        $data['success'] =  false;
+                        $data['errors'] = collect(['You need to confirm your new email']);
+                    }
                 } else {
                     $data['success'] =  false;
-                    $data['errors'] = collect(['You need to confirm your new email']);
+                    $data['errors'] = collect(['You need to enter your old email']);
                 }
-            } else {
-                $data['success'] =  false;
-                $data['errors'] = collect(['You need to enter your old email']);
-            }
+            } else
+                $data['success'] = false;
         } catch (\Throwable $th) {
             $data['success'] =  false;
             $data['errors'] =  collect(['Error']);
@@ -134,40 +123,39 @@ class UserController extends Controller
     public function updatePassword(User $user)
     {
         try {
-            if (Hash::check(request()->password, $user->password)) {
-                $data = $this->validateData([
-                    'password' => 'required',
-                    'newPassword' => 'required',
-                    'confirmNewPassword' => 'required',
-                ]);
+            if ($user->id == Auth::user()->id) {
+                if (Hash::check(request()->password, $user->password)) {
+                    $data = $this->validateData([
+                        'password' => 'required',
+                        'newPassword' => 'required',
+                        'confirmNewPassword' => 'required',
+                    ]);
 
-                $user->password = bcrypt(request()->newPassword);
+                    $user->password = bcrypt(request()->newPassword);
 
-                if (request()->newPassword == request()->confirmNewPassword) {
-                    $user->save();
-                    $data['success'] = true;
-                    $data['user'] = $user;
+                    if (request()->newPassword == request()->confirmNewPassword) {
+                        $user->save();
+                        $data['success'] = true;
+                        $data['user']['first_name'] = $user->first_name;
+                        $data['user']['last_name'] = $user->last_name;
+                        $data['user']['phone'] = $user->phone;
+                        $data['user']['address'] = $user->address;
+                        $data['user']['city'] = $user->city;
+                        $data['user']['image'] = $user->image;
+                    } else {
+                        $data['success'] =  false;
+                        $data['errors'] = ['You need to confirm your new password'];
+                    }
                 } else {
                     $data['success'] =  false;
-                    $data['errors'] = ['You need to confirm your new password'];
+                    $data['errors'] = ['You need to enter your old password'];
                 }
-            } else {
-                $data['success'] =  false;
-                $data['errors'] = ['You need to enter your old password'];
-            }
+            } else
+                $data['success'] = false;
         } catch (\Throwable $th) {
             $data['success'] =  false;
         }
 
-        return response()->json(['data' => $data]);
-    }
-    //delete one
-    public function destroy(User $user)
-    {
-        if ($user->delete()) {
-            $data['success'] = true;
-            $data['user'] = $user;
-        }
         return response()->json(['data' => $data]);
     }
 
@@ -179,7 +167,6 @@ class UserController extends Controller
                 'email' => 'required|email',
                 'password' => 'required',
             ]);
-
 
             if (!isset($data['errors'])) {
 
@@ -238,9 +225,7 @@ class UserController extends Controller
     {
         $validator = Validator::make(request()->all(), $rules);
         if ($validator->fails()) {
-
             $data['errors'] =  $validator->errors();
-
             return $data;
         }
     }
