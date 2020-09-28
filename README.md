@@ -2,6 +2,8 @@ Welcome to Hotel101, a hotel bookings system, built with Laravel backend, React 
 
 **Demo:**
 
+ps: the backend is hosted by heroku, so just wait a bit for api response
+
 1 - https://hotel101.netlify.app
 
 2 - http://hotel101.ga
