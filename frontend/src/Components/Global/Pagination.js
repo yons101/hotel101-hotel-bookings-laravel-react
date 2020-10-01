@@ -16,6 +16,7 @@ function Pagination({ paginate, method, params }) {
                             method(...params, page);
                         })
                     }
+                    aria-label='previous'
                     className="-ml-px px-4 py-2 border rounded-l-md border-gray-300 bg-gray-100 text-gray-700 hover:text-gray-500 focus:outline-none"
                 >
                     <i className="fas fa-angle-left"></i>
@@ -28,6 +29,7 @@ function Pagination({ paginate, method, params }) {
                     i++;
                     return (
                         <button
+                            aria-label={i}
                             className="-ml-px px-4 py-2 border border-gray-300 bg-gray-100 text-gray-700 hover:text-gray-500 focus:outline-none"
                             onClick={() => {
                                 method(...params, i);
@@ -56,6 +58,7 @@ function Pagination({ paginate, method, params }) {
                             method(...params, page);
                         })
                     }
+                    aria-label='next'
                     className="-ml-px px-4 py-2 border rounded-r-md border-gray-300 bg-gray-100 text-gray-700 hover:text-gray-500 focus:outline-none"
                 >
                     <i className="fas fa-angle-right"></i>
