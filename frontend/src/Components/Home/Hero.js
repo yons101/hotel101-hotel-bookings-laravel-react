@@ -94,6 +94,7 @@ function Hero() {
                         <div className="flex flex-col md:mr-3 w-full md:w-3/4 ">
                             <span className="text-gray-100 text-xl">City</span>
                             <select
+                                aria-label='City'
                                 className="px-6 py-3 mt-2"
                                 value={initSearchData.city}
                                 onChange={(e) =>
@@ -119,6 +120,7 @@ function Hero() {
                                 Guests
                             </span>
                             <select
+                                aria-label='Guest Count'
                                 placeholder="Select one"
                                 className="px-6 py-3 mt-2"
                                 value={initSearchData.guest}
