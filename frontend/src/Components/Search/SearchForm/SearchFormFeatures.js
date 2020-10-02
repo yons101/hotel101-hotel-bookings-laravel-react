@@ -9,8 +9,9 @@ function SearchFormFeatures({ criteria, setCriteria, features }) {
             {features &&
                 features.map((feature, i) => {
                     return (
-                        <label className="mt-5 block" key={i}>
+                        <label htmlFor="features" className="mt-5 block" key={i}>
                             <Checkbox
+                                id="features"
                                 name="features"
                                 value={feature}
                                 setCriteria={setCriteria}
