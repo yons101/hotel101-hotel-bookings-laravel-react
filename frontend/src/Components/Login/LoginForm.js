@@ -50,6 +50,7 @@ function LoginForm() {
                     type="email"
                     name="email"
                     className="p-2 w-full border border-gray-400 focus:outline-none focus:border-black"
+                    aria-required="true"
                     onChange={(e) =>
                         setUser({ ...user, email: e.target.value })
                     }
@@ -63,6 +64,7 @@ function LoginForm() {
                     type="password"
                     name="password"
                     className="p-2 w-full border border-gray-400 focus:outline-none focus:border-black"
+                    aria-required="true"
                     onChange={(e) =>
                         setUser({ ...user, password: e.target.value })
                     }
