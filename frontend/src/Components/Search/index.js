@@ -41,6 +41,7 @@ function Search(props) {
         <>
             <Header />
             <div className="p-8 flex flex-col lg:flex-row xl:px-32">
+                <h1 className="sr-only">Search for Hotels</h1>
                 <SearchForm
                     {...props}
                     criteria={criteria}
