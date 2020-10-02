@@ -9,8 +9,9 @@ function SearchFormStars({ criteria, setCriteria }) {
 
             {stars.map((s, i) => {
                 return (
-                    <label className="mt-2 block" key={i}>
+                    <label htmlFor="star-rating" className="mt-2 block" key={i}>
                         <Checkbox
+                            id="star-rating"
                             name="star"
                             value={s}
                             setCriteria={setCriteria}
