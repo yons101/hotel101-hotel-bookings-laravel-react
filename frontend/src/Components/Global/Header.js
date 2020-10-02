@@ -44,6 +44,7 @@ function Header({ hotelId }) {
                     {!state.auth.isAuthenticated ? (
                         <>
                             <li
+                                aria-label="dropdown button"
                                 className="mr-5 hover:text-yellow-500 "
                                 onClick={() => setDropDown(!dropDown)}
                             >
@@ -80,6 +81,7 @@ function Header({ hotelId }) {
                     ) : (
                         <>
                             <li
+                                aria-label="dropdown button"
                                 className="mr-5 hover:text-yellow-500 cur"
                                 onClick={() => setDropDown(!dropDown)}
                             >
