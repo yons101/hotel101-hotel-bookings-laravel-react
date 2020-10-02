@@ -5,7 +5,7 @@ function SearchFormMain({ criteria, setCriteria, cities }) {
         <div className="text-gray-900">
             <h2 className="text-2xl font-semibold">Dates:</h2>
             <div className="mt-5">
-                <label htmlFor="check-in" className="block">Check In</span>
+                <label htmlFor="check-in" className="block">Check In</label>
                 <input
                     id="check-in"
                     className="px-6 py-3 mt-2 w-full border border-gray-500"
