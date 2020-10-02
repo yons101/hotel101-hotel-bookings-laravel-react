@@ -25,7 +25,7 @@ function SearchForm({ criteria, setCriteria, executeScroll }) {
     }, [criteria]); // eslint-disable-line
 
     return (
-        <section className="lg:w-3/12 bg-gray-300 p-5 rounded-sm ">
+        <aside className="lg:w-3/12 bg-gray-300 p-5 rounded-sm ">
             <form action="" onSubmit={onSubmitHandler}>
                 {state.bookings.loading && <Loading />}
 
@@ -56,7 +56,7 @@ function SearchForm({ criteria, setCriteria, executeScroll }) {
                     setCriteria={setCriteria}
                 />
             </form>
-        </section>
+        </aside>
     );
 }
 

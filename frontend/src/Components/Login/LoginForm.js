@@ -34,9 +34,9 @@ function LoginForm() {
             {state.auth.success === false && (
                 <ErrorMessage errors={state.auth.errors} />
             )}
-            <h2 className="text-3xl font-semibold text-center">
+            <h1 className="text-3xl font-semibold text-center">
                 Sign In To Your Account
-            </h2>
+            </h1>
 
             <form
                 className="w-11/12 sm:w-10/12 lg:w-6/12 xl:w-4/12 bg-gray-200 p-10 rounded-sm  mt-10 border shadow-lg"
@@ -46,9 +46,11 @@ function LoginForm() {
                     E-mail:{" "}
                 </label>
                 <input
+                    id="email"
                     type="email"
                     name="email"
                     className="p-2 w-full border border-gray-400 focus:outline-none focus:border-black"
+                    aria-required="true"
                     onChange={(e) =>
                         setUser({ ...user, email: e.target.value })
                     }
@@ -58,9 +60,11 @@ function LoginForm() {
                     Password:{" "}
                 </label>
                 <input
+                    id="password"
                     type="password"
                     name="password"
                     className="p-2 w-full border border-gray-400 focus:outline-none focus:border-black"
+                    aria-required="true"
                     onChange={(e) =>
                         setUser({ ...user, password: e.target.value })
                     }

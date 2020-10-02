@@ -28,22 +28,24 @@ function UserEmail({ id }) {
                 className="mt-5 bg-gray-300 p-5 rounded-sm "
                 onSubmit={onSubmitHandler}
             >
-                <label htmlFor="email" className="block mt-5">
+                <label htmlFor="old-email" className="block mt-5">
                     Old Email:{" "}
                 </label>
                 <input
                     type="email"
+                    id="old-email"
                     className="p-2 w-full xl:w-1/2 border border-gray-400 focus:outline-none focus:border-black"
                     value={userEmail.email}
                     onChange={(e) =>
                         setUserEmail({ ...userEmail, email: e.target.value })
                     }
                 />
-                <label htmlFor="email" className="block mt-5">
+                <label htmlFor="new-email" className="block mt-5">
                     New Email:{" "}
                 </label>
                 <input
                     type="email"
+                    id="new-email"
                     className="p-2 w-full xl:w-1/2 border border-gray-400 focus:outline-none focus:border-black"
                     value={userEmail.newEmail}
                     onChange={(e) =>
@@ -53,11 +55,12 @@ function UserEmail({ id }) {
                         })
                     }
                 />
-                <label htmlFor="email" className="block mt-5">
+                <label htmlFor="confirm-email" className="block mt-5">
                     Confirm New Email:{" "}
                 </label>
                 <input
                     type="email"
+                    id="confirm-email"
                     className="p-2 w-full xl:w-1/2 border border-gray-400 focus:outline-none focus:border-black"
                     value={userEmail.confirmNewEmail}
                     onChange={(e) =>

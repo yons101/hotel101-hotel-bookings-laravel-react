@@ -36,9 +36,9 @@ function RoomHero({ room }) {
                     />
                 </div>
                 <div className="px-5 mt-5 md:pl-10 md:px-5 md:py-10">
-                    <h2 className="text-2xl text-orange-800  font-semibold">
+                    <h1 className="text-2xl text-orange-800  font-semibold">
                         {room && room.name}
-                    </h2>
+                    </h1>
                     <p className="mt-5 w-10/12">{room && room.description}</p>
 
                     {room && room.features.length > 0 && (

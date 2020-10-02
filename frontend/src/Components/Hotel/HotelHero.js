@@ -37,9 +37,9 @@ function HotelHero({ hotel }) {
                 >
                     <div className="text-gray-100">
                         <div>{hotel && _star}</div>
-                        <h2 className="text-3xl font-semibold">
+                        <h1 className="text-3xl font-semibold">
                             {hotel && hotel.name}
-                        </h2>
+                        </h1>
                         <span className="text-sm">
                             {hotel && hotel.address}
                         </span>

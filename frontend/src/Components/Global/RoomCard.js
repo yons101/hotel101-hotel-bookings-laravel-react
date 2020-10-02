@@ -31,9 +31,9 @@ function RoomCard({ room }) {
                 </div>
                 <div className="bg-gray-200 py-5 px-2">
                     <a href={`/room/${room.id}`}>
-                        <h2 className="text-2xl font-medium text-center hover:text-gray-600">
+                        <h3 className="text-2xl font-medium text-center hover:text-gray-600">
                             {room.name}
-                        </h2>
+                        </h3>
                     </a>
                 </div>
             </div>

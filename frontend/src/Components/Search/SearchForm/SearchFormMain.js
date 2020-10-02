@@ -5,8 +5,9 @@ function SearchFormMain({ criteria, setCriteria, cities }) {
         <div className="text-gray-900">
             <h2 className="text-2xl font-semibold">Dates:</h2>
             <div className="mt-5">
-                <span className="block">Check In</span>
+                <label htmlFor="check-in" className="block">Check In</label>
                 <input
+                    id="check-in"
                     className="px-6 py-3 mt-2 w-full border border-gray-500"
                     type="date"
                     value={criteria.check_in}
@@ -16,8 +17,9 @@ function SearchFormMain({ criteria, setCriteria, cities }) {
                 />
             </div>
             <div className="mt-5">
-                <span className="block">Check Out</span>
+                <label htmlFor="check-out" className="block">Check Out</label>
                 <input
+                    id="check-out"
                     className="px-6 py-3 mt-2 w-full border border-gray-500"
                     type="date"
                     value={criteria.check_out}
@@ -27,8 +29,9 @@ function SearchFormMain({ criteria, setCriteria, cities }) {
                 />
             </div>
             <div className="mt-5">
-                <span className="block">City</span>
+                <label htmlFor="city" className="block">City</label>
                 <select
+                    id="city"                
                     placeholder="Select one"
                     className="px-6 py-3 mt-2 w-full border border-gray-500"
                     value={criteria.city}
@@ -50,8 +53,9 @@ function SearchFormMain({ criteria, setCriteria, cities }) {
                 </select>
             </div>
             <div className="mt-5">
-                <span className="block">Guests</span>
+                <label htmlFor="guest-count" className="block">Guests</label>
                 <select
+                    id="guest-count"
                     placeholder="Select one"
                     className="px-6 py-3 mt-2 w-full border border-gray-500"
                     value={criteria.guest}

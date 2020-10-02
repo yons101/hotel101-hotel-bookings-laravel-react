@@ -41,9 +41,9 @@ function SignupForm() {
             {state.auth.success === false && (
                 <ErrorMessage errors={state.auth.errors} />
             )}
-            <h2 className="text-3xl font-semibold text-center">
+            <h1 className="text-3xl font-semibold text-center">
                 Create a free account in order to access our services
-            </h2>
+            </h1>
 
             <form
                 action=""
@@ -54,9 +54,11 @@ function SignupForm() {
                     First Name:{" "}
                 </label>
                 <input
+                    id="first_name"
                     type="text"
                     name="first_name"
                     className="p-2 w-full border border-gray-400 focus:outline-none focus:border-black"
+                    aria-required="true"
                     onChange={(e) =>
                         setUser({ ...user, first_name: e.target.value })
                     }
@@ -66,9 +68,11 @@ function SignupForm() {
                     Last Name:{" "}
                 </label>
                 <input
+                    id="last_name"
                     type="text"
                     name="last_name"
                     className="p-2 w-full border border-gray-400 focus:outline-none focus:border-black"
+                    aria-required="true"
                     onChange={(e) =>
                         setUser({ ...user, last_name: e.target.value })
                     }
@@ -78,9 +82,11 @@ function SignupForm() {
                     Email:{" "}
                 </label>
                 <input
+                    id="email"
                     type="email"
                     name="email"
                     className="p-2 w-full border border-gray-400 focus:outline-none focus:border-black"
+                    aria-required="true"
                     onChange={(e) =>
                         setUser({ ...user, email: e.target.value })
                     }
@@ -90,9 +96,11 @@ function SignupForm() {
                     Password:{" "}
                 </label>
                 <input
+                    id="password"
                     type="password"
                     name="password"
                     className="p-2 w-full border border-gray-400 focus:outline-none focus:border-black"
+                    aria-required="true"
                     onChange={(e) =>
                         setUser({ ...user, password: e.target.value })
                     }
@@ -103,6 +111,7 @@ function SignupForm() {
                         className="text-center bg-yellow-600 text-white hover:bg-yellow-700 uppercase text-sm px-12 py-4 shadow
                     hover:shadow-lg"
                         type="submit"
+                        aria-label='sign up'
                     >
                         Sign Up
                     </button>

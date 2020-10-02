@@ -17,7 +17,7 @@ function UserReviewsList() {
 
     return (
         <div className="w-full md:w-6/12 xl:w-8/12 md:ml-5 bg-gray-200 p-5 rounded-sm  ">
-            <h2 className="text-xl font-semibold">Your Reviews</h2>
+            <h1 className="text-xl font-semibold">Your Reviews</h1>
 
             {state.bookings.loading && <Loading />}
 

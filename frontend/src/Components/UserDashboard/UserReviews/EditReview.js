@@ -72,6 +72,7 @@ function EditReview({
                         Update
                     </button>
                     <select
+                        aria-label="select rating"
                         className="py-2 px-4"
                         value={review.rating}
                         onChange={(e) => {

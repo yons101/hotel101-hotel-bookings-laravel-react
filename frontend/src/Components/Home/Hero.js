@@ -29,7 +29,7 @@ function Hero() {
             />
 
             <div className="mt-8 book flex flex-col justify-center items-center text-gray-100 z-20 w-10/12">
-                <h2 className="mt-16 hidden sm:block text-xl md:text-4xl xl:text-6xl capitalize text-center font-serif">
+                <h1 className="mt-16 hidden sm:block text-xl md:text-4xl xl:text-6xl capitalize text-center font-serif">
                     Enjoy a luxury experience in <br />
                     <Typical
                         steps={[
@@ -50,7 +50,7 @@ function Hero() {
                         wrapper="p"
                         className="inline"
                     />
-                </h2>
+                </h1>
 
                 <div className="bg-orange-500 bg-opacity-75 mt-5 p-5 rounded-sm mx-auto text-gray-700 w-11/12 sm:w-9/12 md:w-8/12 lg:w-7/12 xl:w-9/12 font-sans">
                     <div
@@ -58,10 +58,11 @@ function Hero() {
                  items-center"
                     >
                         <div className="flex flex-col md:mr-3 w-full md:w-3/4 ">
-                            <span className="text-gray-100 text-xl">
+                            <label htmlFor='check-in' className="text-gray-100 text-xl">
                                 Check In
-                            </span>
+                            </label>
                             <input
+                                id= 'check-in'
                                 className="px-6 py-3 mt-2 w-full"
                                 type="date"
                                 value={initSearchData.check_in}
@@ -74,10 +75,11 @@ function Hero() {
                             />
                         </div>
                         <div className="flex flex-col md:mr-3 w-full md:w-3/4 ">
-                            <span className="text-gray-100 text-xl">
+                            <label htmlFor='check-out' className="text-gray-100 text-xl">
                                 Check Out
-                            </span>
+                            </label>
                             <input
+                                id='check-out'
                                 className="px-6 py-3 mt-2 w-full"
                                 type="date"
                                 value={initSearchData.check_out}
@@ -92,6 +94,7 @@ function Hero() {
                         <div className="flex flex-col md:mr-3 w-full md:w-3/4 ">
                             <span className="text-gray-100 text-xl">City</span>
                             <select
+                                aria-label='City'
                                 className="px-6 py-3 mt-2"
                                 value={initSearchData.city}
                                 onChange={(e) =>
@@ -117,6 +120,7 @@ function Hero() {
                                 Guests
                             </span>
                             <select
+                                aria-label='Guest Count'
                                 placeholder="Select one"
                                 className="px-6 py-3 mt-2"
                                 value={initSearchData.guest}
