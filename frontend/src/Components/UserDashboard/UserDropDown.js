@@ -27,7 +27,7 @@ function UserDropDown() {
         <div className="bg-gray-200 p-5 md:hidden rounded-t-md w-full">
             <div className="dropdown px-5">
                 <button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-sm w-full">
-                    <span>{currentPage} 🠋</span>
+                    <span><h1>{currentPage} 🠋 </h1></span>
                 </button>
                 <ul className="dropdown-content hidden text-gray-700 pt-2">
                     <li>
