@@ -65,7 +65,7 @@ function UserPersonalInfo({ user, id }) {
                         className="w-32 h-32 rounded-full object-cover"
                     />
 
-                    <label className="ml-5 px-5 py-2 text-gray-200 bg-orange-500 hover:bg-orange-900 rounded-sm cursor-pointer">
+                    <label aria-label="upload image" className="ml-5 px-5 py-2 text-gray-200 bg-orange-500 hover:bg-orange-900 rounded-sm cursor-pointer">
                         <input
                             type="file"
                             name=""
@@ -85,6 +85,7 @@ function UserPersonalInfo({ user, id }) {
                 <input
                     type="text"
                     name="first_name"
+                    id="first_name"                   
                     className="p-2 w-full xl:w-1/2 border border-gray-400 focus:outline-none focus:border-black"
                     value={userInfo.first_name}
                     onChange={(e) =>
@@ -97,6 +98,7 @@ function UserPersonalInfo({ user, id }) {
                 </label>
                 <input
                     type="text"
+                    id="last_name"
                     name="last_name"
                     className="p-2 w-full xl:w-1/2 border border-gray-400 focus:outline-none focus:border-black"
                     value={userInfo.last_name}
@@ -110,6 +112,7 @@ function UserPersonalInfo({ user, id }) {
                 </label>
                 <input
                     type="tel"
+                    id="phone"
                     name="phone"
                     className="p-2 w-full xl:w-1/2 border border-gray-400 focus:outline-none focus:border-black"
                     value={userInfo.phone}
@@ -124,6 +127,7 @@ function UserPersonalInfo({ user, id }) {
                 <input
                     type="text"
                     name="address"
+                    id="address"
                     className="p-2 w-full xl:w-1/2 border border-gray-400 focus:outline-none focus:border-black"
                     value={userInfo.address}
                     onChange={(e) =>
