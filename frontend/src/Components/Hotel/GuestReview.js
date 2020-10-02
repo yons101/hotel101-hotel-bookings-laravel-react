@@ -43,7 +43,10 @@ function GuestReview({
             break;
     }
     return (
-        <div className="bg-gray-300 rounded-sm  mt-5 p-5 flex flex-col md:flex-row lg:items-center">
+        <div
+            className="bg-gray-300 rounded-sm  mt-5 p-5 flex flex-col md:flex-row lg:items-center"
+            data-aos="fade-up"
+        >
             <div className="flex items-center justify-between md:flex-col md:justify-start md:w-2/12 md:mr-12">
                 <img
                     src={

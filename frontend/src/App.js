@@ -29,6 +29,8 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import RedirectPage from "./Components/Global/RedirectPage";
 import Unauthorized from "./Components/Global/Unauthorized";
 import useSecureLs from "./Components/Global/useSecureLs";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
     const dispatch = useDispatch();
@@ -41,6 +43,14 @@ function App() {
         checkAuth(dispatch, _token, userId, isAdmin);
     }, [_token, userId, isAdmin]); // eslint-disable-line
 
+    useEffect(() => {
+        AOS.init({
+            offset: 200,
+            duration: 600,
+            easing: "ease-in-sine",
+            delay: 50
+        });
+    }, []); // eslint-disable-line
     return (
         <>
             <Router>

@@ -9,8 +9,11 @@ function RoomCard({ room }) {
     }, [room]); // eslint-disable-line
     return (
         <>
-            <div className="mx-5 rounded-t-lg overflow-hidden shadow-xl mt-5">
-                <div className="relative ">
+            <div
+                className="mx-5 rounded-t-lg overflow-hidden shadow-xl mt-5"
+                data-aos="fade-up"
+            >
+                <div className="relative">
                     <img
                         src={
                             room && room.image && typeof image === "string"

@@ -9,6 +9,7 @@
         "@testing-library/user-event": "^7.2.1",
         "@uiw/react-tag": "^4.6.10",
         "@yaireo/tagify": "^3.18.1",
+        "aos": "^2.3.4",
         "autoprefixer": "^9.5.1",
         "axios": "^0.20.0",
         "google-maps-react": "^2.0.6",

@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 function HotelCard({ hotel: { id, name, min_price, star, image } }) {
     return (
         <>
-            <div className="bg-gray-100 rounded-sm  overflow-hidden shadow-lg mt-5">
+            <div
+                className="bg-gray-100 rounded-sm  overflow-hidden shadow-lg mt-5"
+                data-aos="fade-up"
+            >
                 <Link to={`/hotel/${id}`}>
                     <div className="relative ">
                         <img

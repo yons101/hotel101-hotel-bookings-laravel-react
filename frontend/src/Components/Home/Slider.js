@@ -50,7 +50,7 @@ export default class SimpleSlider extends React.Component {
         return (
             <>
                 {images.length !== 0 && (
-                    <div className="mt-10">
+                    <div className="mt-10" data-aos="fade-up">
                         {isOpen && (
                             <Lightbox
                                 mainSrc={`${process.env.REACT_APP_BASE_URL}/img/hotels/${images[photoIndex].image}`}
