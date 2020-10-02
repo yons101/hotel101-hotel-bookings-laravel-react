@@ -25,11 +25,12 @@ function UserPassword({ id }) {
                 className="mt-5 bg-gray-300 p-5 rounded-sm "
                 onSubmit={onSubmitHandler}
             >
-                <label htmlFor="password" className="block mt-5">
+                <label htmlFor="old-password" className="block mt-5">
                     Old Password:{" "}
                 </label>
                 <input
                     type="password"
+                    id="old-password"
                     className="p-2 w-full xl:w-1/2 border border-gray-400 focus:outline-none focus:border-black"
                     value={userPassword.password}
                     onChange={(e) =>
@@ -40,11 +41,12 @@ function UserPassword({ id }) {
                     }
                 />
 
-                <label htmlFor="password" className="block mt-5">
+                <label htmlFor="new-password" className="block mt-5">
                     New Password:{" "}
                 </label>
                 <input
                     type="password"
+                    id="new-password"
                     className="p-2 w-full xl:w-1/2 border border-gray-400 focus:outline-none focus:border-black"
                     value={userPassword.newPassword}
                     onChange={(e) =>
@@ -55,11 +57,12 @@ function UserPassword({ id }) {
                     }
                 />
 
-                <label htmlFor="password" className="block mt-5">
+                <label htmlFor="confirm-password" className="block mt-5">
                     Confirm Password:{" "}
                 </label>
                 <input
                     type="password"
+                    id="confirm-password"
                     className="p-2 w-full xl:w-1/2 border border-gray-400 focus:outline-none focus:border-black"
                     value={userPassword.confirmNewPassword}
                     onChange={(e) =>
