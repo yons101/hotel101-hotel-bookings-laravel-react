@@ -21,7 +21,7 @@ function ClientReviewCard({ avatar, name, location, rating, review }) {
                         <i className="fas fa-star fa-xs" key={i}></i>
                     ))}
             </span>
-            <p className="mt-6">
+            <p className="mt-6 leading-7">
                 <i className="fas fa-quote-left text-gray-300 mr-2"></i>
                 {review}
                 <i className="fas fa-quote-right text-gray-300 ml-2"></i>
