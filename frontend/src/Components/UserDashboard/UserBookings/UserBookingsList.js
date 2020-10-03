@@ -13,6 +13,7 @@ function UserBookingsList() {
 
     useEffect(() => {
         getUserBookings(dispatch, id, state.auth.token);
+        document.title = `Bookings`;
     }, []); // eslint-disable-line
 
     return (

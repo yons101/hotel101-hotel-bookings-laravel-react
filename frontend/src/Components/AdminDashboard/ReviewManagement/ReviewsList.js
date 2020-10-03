@@ -14,6 +14,7 @@ function ReviewsList() {
 
     useEffect(() => {
         getAllReviews(dispatch, state.auth.token);
+        document.title = `Reviews Management`;
     }, []); // eslint-disable-line
 
     useEffect(() => {

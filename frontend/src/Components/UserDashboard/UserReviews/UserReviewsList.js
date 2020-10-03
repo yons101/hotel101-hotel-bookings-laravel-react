@@ -13,6 +13,7 @@ function UserReviewsList() {
 
     useEffect(() => {
         getUserReviews(dispatch, state.auth.token, id);
+        document.title = `Reviews`;
     }, []); // eslint-disable-line
 
     return (

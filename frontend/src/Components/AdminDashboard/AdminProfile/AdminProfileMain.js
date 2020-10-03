@@ -17,6 +17,7 @@ function AdminProfileMain() {
 
     useEffect(() => {
         getUser(dispatch, state.auth.token, id);
+        document.title = `Profile`;
     }, []); // eslint-disable-line
 
     useEffect(() => {

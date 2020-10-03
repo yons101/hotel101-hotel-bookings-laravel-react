@@ -46,6 +46,7 @@ function Hotel(props) {
                 });
             }
         }, 3000);
+        document.title = `${state.hotels.hotel.name} Hotel`;
         return () => clearTimeout(timer);
     }, [state.hotels.hotel]); // eslint-disable-line
     return (

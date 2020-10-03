@@ -12,6 +12,7 @@ function BookingsList() {
 
     useEffect(() => {
         getAllBookings(dispatch, state.auth.token);
+        document.title = `Bookings Management`;
     }, []); // eslint-disable-line
 
     return (

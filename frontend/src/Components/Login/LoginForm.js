@@ -28,6 +28,9 @@ function LoginForm() {
         state.auth.isAuthenticated && history.push("/");
     }, [state.auth.isAuthenticated]); // eslint-disable-line
 
+    useEffect(() => {
+        document.title = `Login`;
+    }, []); // eslint-disable-line
     return (
         <div className="bg-gray-100 flex flex-col justify-center items-center py-32">
             {state.auth.loading && <Loading />}

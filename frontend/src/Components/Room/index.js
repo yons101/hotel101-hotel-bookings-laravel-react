@@ -17,6 +17,9 @@ function Room() {
     useEffect(() => {
         getRoom(dispatch, id);
     }, []); // eslint-disable-line
+    useEffect(() => {
+        document.title = `${state.rooms.room.name} Room`;
+    }, [state.rooms.room]); // eslint-disable-line
     return (
         <>
             <Header />

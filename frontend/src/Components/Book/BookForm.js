@@ -54,6 +54,9 @@ function BookForm() {
         return () => clearTimeout(timer);
     }, [state.bookings.success]); // eslint-disable-line
 
+    useEffect(() => {
+        document.title = `Book Your Hotel`;
+    }, []); // eslint-disable-line
     return (
         <div className="flex flex-col items-center text-gray-800 lg:my-8">
             {state.bookings.loading && <Loading />}

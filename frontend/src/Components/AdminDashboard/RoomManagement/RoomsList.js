@@ -15,6 +15,7 @@ function RoomsList() {
 
     useEffect(() => {
         getAllRooms(dispatch, state.auth.token);
+        document.title = `Rooms Management`;
     }, []); // eslint-disable-line
 
     useEffect(() => {

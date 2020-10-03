@@ -34,6 +34,10 @@ function SignupForm() {
             history.push("/signup");
         }
     }, [state.auth.token]); // eslint-disable-line
+
+    useEffect(() => {
+        document.title = `Signup`;
+    }, []); // eslint-disable-line
     return (
         <div className="bg-gray-100  flex flex-col justify-center items-center py-32">
             {state.auth.loading && <Loading />}
@@ -111,7 +115,7 @@ function SignupForm() {
                         className="text-center bg-yellow-600 text-white hover:bg-yellow-700 uppercase text-sm px-12 py-4 shadow
                     hover:shadow-lg"
                         type="submit"
-                        aria-label='sign up'
+                        aria-label="sign up"
                     >
                         Sign Up
                     </button>

@@ -15,6 +15,7 @@ function HotelsList() {
 
     useEffect(() => {
         getAllHotels(dispatch, state.auth.token);
+        document.title = `Hotels Management`;
     }, []); // eslint-disable-line
 
     useEffect(() => {
