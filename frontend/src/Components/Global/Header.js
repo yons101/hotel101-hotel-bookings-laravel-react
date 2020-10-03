@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useSecureLs from "../Global/useSecureLs";
 import SecureLS from "secure-ls";
 
 function Header({ hotelId }) {
+    useEffect(() => {
+        let _firstLogin = localStorage.getItem("first_login");
+        if (_firstLogin === "true" && state.auth.isAuthenticated) {
+            setFirstLogin(true);
+        }
+    }, []);
+
     const [dropDown, setDropDown] = useState(false);
     const state = useSelector((state) => state);
     const [id] = useSecureLs("user_id");
     let ls = new SecureLS({ encodingType: "aes", isCompression: false });
-
+    const [firstLogin, setFirstLogin] = useState(false);
     return (
         <header className="relative">
             <nav
@@ -83,10 +90,20 @@ function Header({ hotelId }) {
                             <li
                                 aria-label="dropdown button"
                                 className="mr-5 hover:text-yellow-500 cur"
-                                onClick={() => setDropDown(!dropDown)}
+                                onClick={() => {
+                                    setDropDown(!dropDown);
+                                }}
+                                onMouseOver={() => {
+                                    localStorage.setItem("first_login", false);
+                                    setFirstLogin(false);
+                                }}
                             >
                                 <span className="pb-2 pl-24">
-                                    <i className="fas fa-caret-down fa-lg fa-2x cursor-pointer"></i>
+                                    <i
+                                        className={`fas fa-caret-down fa-lg fa-2x cursor-pointer ${
+                                            firstLogin && "animate-bounce"
+                                        }`}
+                                    ></i>
                                 </span>
                                 <br />
                             </li>

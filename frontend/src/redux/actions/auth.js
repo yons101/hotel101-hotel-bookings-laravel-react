@@ -66,6 +66,9 @@ export const logIn = (dispatch, user, setToken, setUserId, setIsAdmin) => {
             setIsAdmin(
                 response.data.data.success ? response.data.data.is_admin : null
             );
+
+            localStorage.setItem("first_login", true);
+
             dispatch({
                 type: LOG_IN,
                 payload: response.data.data
