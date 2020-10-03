@@ -11,7 +11,8 @@ try {
     _is_admin = ls.get("is_admin");
 } catch (error) {}
 const initialState = {
-    isAuthenticated: _token !== null && _token !== "null" ? true : false,
+    isAuthenticated:
+        _token !== null && _token !== "null" && _token !== "" ? true : false,
     token: _token || null,
     user_id: _user_id || null,
     is_admin: _is_admin || false,
