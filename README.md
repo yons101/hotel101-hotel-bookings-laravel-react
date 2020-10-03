@@ -62,7 +62,7 @@ Frontend:
     React, TailwindCSS, react-redux, react-router-dom,
     react-slick, react-to-print, react-typical,
     react-image-lightbox, secure-ls,
-    @yaireo/tagify, axios, google-maps-react
+    @yaireo/tagify, axios, google-maps-react, AOS
 
 Screenshots:
 
