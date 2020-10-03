@@ -73,7 +73,7 @@ function RoomHero({ room }) {
                     )}
                     <Link
                         to="/book"
-                        className="bg-orange-600 mt-10 py-2 px-6 text-3xl text-gray-200 block text-center w-10/12 mx-auto hover:bg-orange-400"
+                        className="bg-orange-600 mt-10 py-2 px-6 text-3xl text-gray-200 block text-center w-10/12 mx-auto hover:bg-orange-900 rounded-sm"
                     >
                         BOOK
                     </Link>

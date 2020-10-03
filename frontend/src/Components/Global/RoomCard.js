@@ -9,9 +9,10 @@ function RoomCard({ room }) {
     }, [room]); // eslint-disable-line
     return (
         <>
-            <div
-                className="mx-5 rounded-t-lg overflow-hidden shadow-xl mt-5"
+            <a
+                className="mx-5 rounded-t-lg overflow-hidden shadow-xl mt-5 "
                 data-aos="fade-up"
+                href={`/room/${room.id}`}
             >
                 <div className="relative">
                     <img
@@ -24,7 +25,7 @@ function RoomCard({ room }) {
                         alt="room"
                     />
                     <div className="absolute bottom-0 text-gray-100 flex">
-                        <div className="bg-orange-600 py-2 px-6 rounded-tr-lg hover:bg-orange-800 flex flex-col items-center">
+                        <div className="bg-orange-600 py-2 px-6 rounded-tr-lg flex flex-col items-center">
                             <span className="line-through text-gray-300 text-sm">
                                 {parseFloat(room.price) + 100} $
                             </span>
@@ -33,13 +34,11 @@ function RoomCard({ room }) {
                     </div>
                 </div>
                 <div className="bg-gray-200 py-5 px-2">
-                    <a href={`/room/${room.id}`}>
-                        <h3 className="text-2xl font-medium text-center hover:text-gray-600">
-                            {room.name}
-                        </h3>
-                    </a>
+                    <h3 className="text-2xl font-medium text-center hover:text-gray-600">
+                        {room.name}
+                    </h3>
                 </div>
-            </div>
+            </a>
         </>
     );
 }
