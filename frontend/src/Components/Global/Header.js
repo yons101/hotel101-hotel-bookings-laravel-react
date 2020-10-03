@@ -10,7 +10,7 @@ function Header({ hotelId }) {
         if (_firstLogin === "true" && state.auth.isAuthenticated) {
             setFirstLogin(true);
         }
-    }, []);
+    }, []); // eslint-disable-line
 
     const [dropDown, setDropDown] = useState(false);
     const state = useSelector((state) => state);

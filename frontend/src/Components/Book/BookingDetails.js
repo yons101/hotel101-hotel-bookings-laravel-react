@@ -42,7 +42,7 @@ function BookingDetails({ booking, setBooking }) {
             <div className="p-5 ">
                 <div className="flex flex-col md:flex-row md:justify-between w-full bg-gray-200 rounded-sm  overflow-hidden shadow-xl">
                     <div className="md:w-1/4">
-                        <img
+                        <img // eslint-disable-line
                             src={
                                 room_image
                                     ? `${process.env.REACT_APP_BASE_URL}/img/rooms/${room_image}`
@@ -61,7 +61,10 @@ function BookingDetails({ booking, setBooking }) {
                         </div>
                         <div className="mt-8">
                             <div className="flex flex-col md:flex-row md:justify-between items-center">
-                                <label htmlFor="check-in" className="mr-5 text-gray-900 md:w-1/4">
+                                <label
+                                    htmlFor="check-in"
+                                    className="mr-5 text-gray-900 md:w-1/4"
+                                >
                                     Check-in
                                 </label>
                                 <input
@@ -80,7 +83,10 @@ function BookingDetails({ booking, setBooking }) {
                                 />
                             </div>
                             <div className="flex flex-col md:flex-row md:justify-between items-center mt-4">
-                                <label htmlFor="check-out" className="mr-5 text-gray-900 md:w-1/4">
+                                <label
+                                    htmlFor="check-out"
+                                    className="mr-5 text-gray-900 md:w-1/4"
+                                >
                                     Check-out
                                 </label>
                                 <input
